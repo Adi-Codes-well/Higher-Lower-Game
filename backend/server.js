@@ -10,6 +10,23 @@ app.use(express.json());
 
 // --- Expanded Static Keyword Database ---
 const KEYWORD_DATA = [
+    // Ultra Extreme Popular Words
+    { name: "YouTube", searches: 594200000, rawScore: 100, imageUrl: "https://placehold.co/600x400/FF0000/white?text=YouTube" },
+    { name: "Whatsapp Web", searches: 505700000, rawScore: 100, imageUrl: "https://placehold.co/600x400/25D366/white?text=Whatsapp+Web" },
+    { name: "ChatGPT", searches: 344700000, rawScore: 100, imageUrl: "https://placehold.co/600x400/74AA9C/white?text=ChatGPT" },
+    { name: "Facebook", searches: 298800000, rawScore: 100, imageUrl: "https://placehold.co/600x400/1877F2/white?text=Facebook" },
+    { name: "Google", searches: 287300000, rawScore: 100, imageUrl: "https://placehold.co/600x400/4285F4/white?text=Google" },
+    { name: "Translate", searches: 261800000, rawScore: 99, imageUrl: "https://placehold.co/600x400/4285F4/white?text=Translate" },
+    { name: "Gmail", searches: 248100000, rawScore: 99, imageUrl: "https://placehold.co/600x400/EA4335/white?text=Gmail" },
+    { name: "Amazon", searches: 225800000, rawScore: 99, imageUrl: "https://placehold.co/600x400/FF9900/white?text=Amazon" },
+    { name: "Canva", searches: 160300000, rawScore: 99, imageUrl: "https://placehold.co/600x400/00C4CC/white?text=Canva" },
+    { name: "Weather", searches: 145000000, rawScore: 99, imageUrl: "https://placehold.co/600x400/FBCB0A/white?text=Weather" },
+    { name: "Instagram", searches: 185000000, rawScore: 99, imageUrl: "https://placehold.co/600x400/C13584/white?text=Instagram" },
+    { name: "Cricbuzz", searches: 317700000, rawScore: 100, imageUrl: "https://placehold.co/600x400/009270/white?text=Cricbuzz" },
+    { name: "Satta King", searches: 151300000, rawScore: 99, imageUrl: "https://placehold.co/600x400/000000/white?text=Satta+King" },
+    { name: "Twitter", searches: 148500000, rawScore: 99, imageUrl: "https://placehold.co/600x400/1DA1F2/white?text=Twitter" },
+    { name: "Flipkart", searches: 69200000, rawScore: 98, imageUrl: "https://placehold.co/600x400/2874F0/white?text=Flipkart" },
+    
     { name: "IPL", searches: 9500000, rawScore: 100, imageUrl: "https://placehold.co/600x400/orange/white?text=IPL" },
     { name: "Cricket", searches: 8800000, rawScore: 98, imageUrl: "https://placehold.co/600x400/green/white?text=Cricket" },
     { name: "Narendra Modi", searches: 8500000, rawScore: 97, imageUrl: "https://placehold.co/600x400/F97316/white?text=Narendra+Modi" },
@@ -20,14 +37,9 @@ const KEYWORD_DATA = [
     { name: "Mumbai", searches: 6500000, rawScore: 90, imageUrl: "https://placehold.co/600x400/3B82F6/white?text=Mumbai" },
 
     // Worldwide - Top Tier
-    { name: "Google", searches: 10000000, rawScore: 100, imageUrl: "https://placehold.co/600x400/4285F4/white?text=Google" },
-    { name: "Facebook", searches: 9800000, rawScore: 99, imageUrl: "https://placehold.co/600x400/1877F2/white?text=Facebook" },
-    { name: "YouTube", searches: 9700000, rawScore: 99, imageUrl: "https://placehold.co/600x400/FF0000/white?text=YouTube" },
-    { name: "Amazon", searches: 9200000, rawScore: 98, imageUrl: "https://placehold.co/600x400/FF9900/white?text=Amazon" },
     { name: "Cristiano Ronaldo", searches: 8900000, rawScore: 98, imageUrl: "https://placehold.co/600x400/000000/white?text=Ronaldo" },
     { name: "Lionel Messi", searches: 8700000, rawScore: 97, imageUrl: "https://placehold.co/600x400/3399FF/white?text=Messi" },
     { name: "Netflix", searches: 8400000, rawScore: 96, imageUrl: "https://placehold.co/600x400/E50914/white?text=Netflix" },
-    { name: "Instagram", searches: 8200000, rawScore: 96, imageUrl: "https://placehold.co/600x400/C13584/white?text=Instagram" },
     { name: "Taylor Swift", searches: 8000000, rawScore: 95, imageUrl: "https://placehold.co/600x400/B39EB5/white?text=Taylor+Swift" },
     { name: "Bitcoin", searches: 7700000, rawScore: 94, imageUrl: "https://placehold.co/600x400/F7931A/white?text=Bitcoin" },
     
@@ -81,8 +93,6 @@ const KEYWORD_DATA = [
     { name: "Ayurveda", searches: 1500000, rawScore: 65, imageUrl: "https://placehold.co/600x400/16A34A/white?text=Ayurveda" },
     { name: "Saree", searches: 1300000, rawScore: 62, imageUrl: "https://placehold.co/600x400/DB2777/white?text=Saree" },
     { name: "Jawaharlal Nehru", searches: 1100000, rawScore: 60, imageUrl: "https://placehold.co/600x400/78716C/white?text=Nehru" },
-    { name: "Ghats", searches: 900000, rawScore: 58, imageUrl: "https://placehold.co/600x400/A16207/white?text=Ghats" },
-    { name: "Rabindranath Tagore", searches: 700000, rawScore: 55, imageUrl: "https://placehold.co/600x400/44403C/white?text=Tagore" },
     
     // Worldwide - Lower Tier
     { name: "Coffee", searches: 3000000, rawScore: 77, imageUrl: "https://placehold.co/600x400/6F4E37/white?text=Coffee" },
@@ -95,10 +105,19 @@ const KEYWORD_DATA = [
     { name: "Chess", searches: 1600000, rawScore: 66, imageUrl: "https://placehold.co/600x400/D18B47/black?text=Chess" },
     { name: "The Beatles", searches: 1400000, rawScore: 63, imageUrl: "https://placehold.co/600x400/4A4A4A/white?text=The+Beatles" },
     { name: "Buddhism", searches: 1200000, rawScore: 61, imageUrl: "https://placehold.co/600x400/FFC300/black?text=Buddhism" },
+
+    // New additions (under 1M) - Tier 1 (500k - 999k)
+    { name: "Ghats", searches: 900000, rawScore: 58, imageUrl: "https://placehold.co/600x400/A16207/white?text=Ghats" },
+    { name: "Rabindranath Tagore", searches: 700000, rawScore: 55, imageUrl: "https://placehold.co/600x400/44403C/white?text=Tagore" },
     { name: "Sudoku", searches: 1000000, rawScore: 59, imageUrl: "https://placehold.co/600x400/E2E8F0/black?text=Sudoku" },
     { name: "Origami", searches: 800000, rawScore: 56, imageUrl: "https://placehold.co/600x400/F472B6/white?text=Origami" },
-    
-    // Niche (150k - 500k)
+    { name: "Satyajit Ray", searches: 950000, rawScore: 58, imageUrl: "https://placehold.co/600x400/1C1917/white?text=Satyajit+Ray" },
+    { name: "Hampi", searches: 850000, rawScore: 57, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Hampi" },
+    { name: "Konark Sun Temple", searches: 750000, rawScore: 56, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Konark" },
+    { name: "Elephanta Caves", searches: 650000, rawScore: 54, imageUrl: "https://placehold.co/600x400/A16207/white?text=Elephanta+Caves" },
+    { name: "Puran Poli", searches: 550000, rawScore: 51, imageUrl: "https://placehold.co/600x400/FACC15/black?text=Puran+Poli" },
+
+    // New additions (under 1M) - Tier 2 (200k - 499k)
     { name: "Indie Gaming", searches: 580000, rawScore: 51, imageUrl: "https://placehold.co/600x400/9333EA/white?text=Indie+Gaming" },
     { name: "Vincent van Gogh", searches: 600000, rawScore: 52, imageUrl: "https://placehold.co/600x400/0074D9/white?text=Van+Gogh" },
     { name: "Dosa", searches: 500000, rawScore: 50, imageUrl: "https://placehold.co/600x400/FACC15/black?text=Dosa" },
@@ -110,29 +129,27 @@ const KEYWORD_DATA = [
     { name: "Sustainable Fashion", searches: 320000, rawScore: 45, imageUrl: "https://placehold.co/600x400/10B981/white?text=Sustainable+Fashion" },
     { name: "Kathakali", searches: 300000, rawScore: 35, imageUrl: "https://placehold.co/600x400/DC2626/white?text=Kathakali" },
     { name: "Local Coffee Shops", searches: 280000, rawScore: 42, imageUrl: "https://placehold.co/600x400/A16207/white?text=Coffee+Shops" },
-    { name: "Konark Sun Temple", searches: 250000, rawScore: 33, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Konark" },
     { name: "Amateur Radio", searches: 240000, rawScore: 32, imageUrl: "https://placehold.co/600x400/1C1917/white?text=Ham+Radio" },
     { name: "Urban Gardening", searches: 220000, rawScore: 40, imageUrl: "https://placehold.co/600x400/22C55E/white?text=Urban+Gardening" },
+    
+    // New additions (under 1M) - Tier 3 (50k - 199k)
     { name: "Rani Lakshmibai", searches: 200000, rawScore: 30, imageUrl: "https://placehold.co/600x400/9A3412/white?text=Lakshmibai" },
     { name: "The Rubik's Cube", searches: 200000, rawScore: 30, imageUrl: "https://placehold.co/600x400/009E60/white?text=Rubik's+Cube" },
     { name: "Warli Painting", searches: 180000, rawScore: 29, imageUrl: "https://placehold.co/600x400/78350F/white?text=Warli+Painting" },
     { name: "Historical Fiction Books", searches: 160000, rawScore: 38, imageUrl: "https://placehold.co/600x400/78716C/white?text=Historical+Fiction" },
     { name: "Jallianwala Bagh", searches: 150000, rawScore: 28, imageUrl: "https://placehold.co/600x400/7F1D1D/white?text=Jallianwala+Bagh" },
-
-    // More Niche (40k - 150k)
     { name: "Sourdough Bread", searches: 140000, rawScore: 27, imageUrl: "https://placehold.co/600x400/D69E2E/black?text=Sourdough" },
     { name: "Bandhani Sarees", searches: 120000, rawScore: 26, imageUrl: "https://placehold.co/600x400/DB2777/white?text=Bandhani" },
-    { name: "Satyajit Ray", searches: 100000, rawScore: 25, imageUrl: "https://placehold.co/600x400/1C1917/white?text=Satyajit+Ray" },
     { name: "Mechanical Keyboards", searches: 95000, rawScore: 24, imageUrl: "https://placehold.co/600x400/3B82F6/white?text=Mech+Keyboards" },
     { name: "Fountain Pens", searches: 85000, rawScore: 23, imageUrl: "https://placehold.co/600x400/4B5563/white?text=Fountain+Pens" },
     { name: "Bonsai Trees", searches: 75000, rawScore: 22, imageUrl: "https://placehold.co/600x400/16A34A/white?text=Bonsai" },
     { name: "Kombucha Brewing", searches: 65000, rawScore: 21, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Kombucha" },
     { name: "Film Photography", searches: 55000, rawScore: 20, imageUrl: "https://placehold.co/600x400/6B7280/white?text=Film+Photography" },
     { name: "Mysore Pak", searches: 52000, rawScore: 19, imageUrl: "https://placehold.co/600x400/FBBF24/black?text=Mysore+Pak" },
+    
+    // New additions (under 1M) - Tier 4 (10k - 49k)
     { name: "Calligraphy", searches: 48000, rawScore: 19, imageUrl: "https://placehold.co/600x400/A16207/white?text=Calligraphy" },
     { name: "Lock Picking", searches: 42000, rawScore: 18, imageUrl: "https://placehold.co/600x400/1F2937/white?text=Lock+Picking" },
-
-    // Ultra Niche (Under 40k)
     { name: "Artisanal Cheese Making", searches: 38000, rawScore: 15, imageUrl: "https://placehold.co/600x400/FBBF24/black?text=Cheese+Making" },
     { name: "Speedcubing", searches: 35000, rawScore: 14, imageUrl: "https://placehold.co/600x400/DC2626/white?text=Speedcubing" },
     { name: "Terrarium Building", searches: 32000, rawScore: 13, imageUrl: "https://placehold.co/600x400/059669/white?text=Terrarium" },
@@ -142,6 +159,17 @@ const KEYWORD_DATA = [
     { name: "Home Beekeeping", searches: 19000, rawScore: 10, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Beekeeping" },
     { name: "Ant Farming", searches: 15000, rawScore: 9, imageUrl: "https://placehold.co/600x400/9A3412/white?text=Ant+Farming" },
     { name: "Forgotten 80s Movies", searches: 12000, rawScore: 8, imageUrl: "https://placehold.co/600x400/EC4899/white?text=80s+Movies" },
+    { name: "Kalaripayattu", searches: 49500, rawScore: 19, imageUrl: "https://placehold.co/600x400/991B1B/white?text=Kalaripayattu" },
+    { name: "Gatka", searches: 40500, rawScore: 18, imageUrl: "https://placehold.co/600x400/F97316/white?text=Gatka" },
+    { name: "Silambam", searches: 33100, rawScore: 17, imageUrl: "https://placehold.co/600x400/F59E0B/white?text=Silambam" },
+    { name: "Thang-Ta", searches: 27100, rawScore: 16, imageUrl: "https://placehold.co/600x400/059669/white?text=Thang-Ta" },
+    { name: "Pachisi", searches: 22200, rawScore: 15, imageUrl: "https://placehold.co/600x400/EC4899/white?text=Pachisi" },
+    { name: "Pallanguzhi", searches: 18100, rawScore: 14, imageUrl: "https://placehold.co/600x400/A16207/white?text=Pallanguzhi" },
+    { name: "Aadu Puli Attam", searches: 14800, rawScore: 13, imageUrl: "https://placehold.co/600x400/4B5563/white?text=Aadu+Puli+Attam" },
+    { name: "Dhokra Craft", searches: 12100, rawScore: 12, imageUrl: "https://placehold.co/600x400/78350F/white?text=Dhokra+Craft" },
+    { name: "Pattachitra", searches: 9900, rawScore: 11, imageUrl: "https://placehold.co/600x400/DC2626/white?text=Pattachitra" },
+
+    // Ultra Niche (Under 10k)
     { name: "Gothic Architecture", searches: 9000, rawScore: 7, imageUrl: "https://placehold.co/600x400/1C1917/white?text=Gothic+Architecture" },
     { name: "Geocaching", searches: 7000, rawScore: 6, imageUrl: "https://placehold.co/600x400/22C55E/white?text=Geocaching" },
     { name: "Stoicism Philosophy", searches: 5000, rawScore: 5, imageUrl: "https://placehold.co/600x400/78716C/white?text=Stoicism" },
@@ -151,6 +179,12 @@ const KEYWORD_DATA = [
     { name: "Quantum Entanglement", searches: 2000, rawScore: 1, imageUrl: "https://placehold.co/600x400/3B82F6/white?text=Quantum" },
     { name: "Lawn Mower Racing", searches: 1500, rawScore: 1, imageUrl: "https://placehold.co/600x400/16A34A/white?text=Lawn+Mower+Racing" },
     { name: "Extreme Ironing", searches: 800, rawScore: 1, imageUrl: "https://placehold.co/600x400/64748B/white?text=Extreme+Ironing" },
+    { name: "Toda Embroidery", searches: 8100, rawScore: 10, imageUrl: "https://placehold.co/600x400/9333EA/white?text=Toda+Embroidery" },
+    { name: "Sankheda Furniture", searches: 6600, rawScore: 9, imageUrl: "https://placehold.co/600x400/9A3412/white?text=Sankheda+Furniture" },
+    { name: "Bidriware", searches: 5400, rawScore: 8, imageUrl: "https://placehold.co/600x400/1C1917/white?text=Bidriware" },
+    { name: "Channapatna Toys", searches: 4400, rawScore: 7, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Channapatna+Toys" },
+    { name: "Pashmina", searches: 2400, rawScore: 4, imageUrl: "https://placehold.co/600x400/D1D5DB/black?text=Pashmina" },
+    { name: "Chikankari", searches: 1900, rawScore: 3, imageUrl: "https://placehold.co/600x400/F0FDFA/black?text=Chikankari" },
 ];
 
 
