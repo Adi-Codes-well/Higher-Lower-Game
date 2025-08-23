@@ -84,8 +84,7 @@ const KEYWORD_DATA = [
     { name: "Jawaharlal Nehru", searches: 1100000, rawScore: 60, imageUrl: "https://placehold.co/600x400/78716C/white?text=Nehru" },
     { name: "Ghats", searches: 900000, rawScore: 58, imageUrl: "https://placehold.co/600x400/A16207/white?text=Ghats" },
     { name: "Rabindranath Tagore", searches: 700000, rawScore: 55, imageUrl: "https://placehold.co/600x400/44403C/white?text=Tagore" },
-    { name: "Dosa", searches: 500000, rawScore: 50, imageUrl: "https://placehold.co/600x400/FACC15/black?text=Dosa" },
-
+    
     // Worldwide - Lower Tier
     { name: "Coffee", searches: 3000000, rawScore: 77, imageUrl: "https://placehold.co/600x400/6F4E37/white?text=Coffee" },
     { name: "Shakespeare", searches: 2800000, rawScore: 76, imageUrl: "https://placehold.co/600x400/8C7853/white?text=Shakespeare" },
@@ -97,20 +96,50 @@ const KEYWORD_DATA = [
     { name: "Chess", searches: 1600000, rawScore: 66, imageUrl: "https://placehold.co/600x400/D18B47/black?text=Chess" },
     { name: "The Beatles", searches: 1400000, rawScore: 63, imageUrl: "https://placehold.co/600x400/4A4A4A/white?text=The+Beatles" },
     { name: "Buddhism", searches: 1200000, rawScore: 61, imageUrl: "https://placehold.co/600x400/FFC300/black?text=Buddhism" },
-    
-    // Indian - Niche
-    { name: "Kathakali", searches: 300000, rawScore: 35, imageUrl: "https://placehold.co/600x400/DC2626/white?text=Kathakali" },
-    { name: "Konark Sun Temple", searches: 250000, rawScore: 33, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Konark" },
-    { name: "Rani Lakshmibai", searches: 200000, rawScore: 30, imageUrl: "https://placehold.co/600x400/9A3412/white?text=Lakshmibai" },
-    { name: "Jallianwala Bagh", searches: 150000, rawScore: 28, imageUrl: "https://placehold.co/600x400/7F1D1D/white?text=Jallianwala+Bagh" },
-    { name: "Satyajit Ray", searches: 100000, rawScore: 25, imageUrl: "https://placehold.co/600x400/1C1917/white?text=Satyajit+Ray" },
-
-    // Worldwide - Niche
     { name: "Sudoku", searches: 1000000, rawScore: 59, imageUrl: "https://placehold.co/600x400/E2E8F0/black?text=Sudoku" },
     { name: "Origami", searches: 800000, rawScore: 56, imageUrl: "https://placehold.co/600x400/F472B6/white?text=Origami" },
+    
+    // Niche (150k - 600k)
+    { name: "Indie Gaming", searches: 580000, rawScore: 51, imageUrl: "https://placehold.co/600x400/9333EA/white?text=Indie+Gaming" },
     { name: "Vincent van Gogh", searches: 600000, rawScore: 52, imageUrl: "https://placehold.co/600x400/0074D9/white?text=Van+Gogh" },
+    { name: "Dosa", searches: 500000, rawScore: 50, imageUrl: "https://placehold.co/600x400/FACC15/black?text=Dosa" },
+    { name: "Air Fryer Recipes", searches: 450000, rawScore: 48, imageUrl: "https://placehold.co/600x400/F97316/white?text=Air+Fryer" },
     { name: "Gladiator (Movie)", searches: 400000, rawScore: 40, imageUrl: "https://placehold.co/600x400/A98307/white?text=Gladiator" },
+    { name: "Sustainable Fashion", searches: 320000, rawScore: 45, imageUrl: "https://placehold.co/600x400/10B981/white?text=Sustainable+Fashion" },
+    { name: "Kathakali", searches: 300000, rawScore: 35, imageUrl: "https://placehold.co/600x400/DC2626/white?text=Kathakali" },
+    { name: "Local Coffee Shops", searches: 280000, rawScore: 42, imageUrl: "https://placehold.co/600x400/A16207/white?text=Coffee+Shops" },
+    { name: "Konark Sun Temple", searches: 250000, rawScore: 33, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Konark" },
+    { name: "Urban Gardening", searches: 220000, rawScore: 40, imageUrl: "https://placehold.co/600x400/22C55E/white?text=Urban+Gardening" },
+    { name: "Rani Lakshmibai", searches: 200000, rawScore: 30, imageUrl: "https://placehold.co/600x400/9A3412/white?text=Lakshmibai" },
     { name: "The Rubik's Cube", searches: 200000, rawScore: 30, imageUrl: "https://placehold.co/600x400/009E60/white?text=Rubik's+Cube" },
+    { name: "Historical Fiction Books", searches: 160000, rawScore: 38, imageUrl: "https://placehold.co/600x400/78716C/white?text=Historical+Fiction" },
+    { name: "Jallianwala Bagh", searches: 150000, rawScore: 28, imageUrl: "https://placehold.co/600x400/7F1D1D/white?text=Jallianwala+Bagh" },
+
+    // More Niche (40k - 150k)
+    { name: "Satyajit Ray", searches: 100000, rawScore: 25, imageUrl: "https://placehold.co/600x400/1C1917/white?text=Satyajit+Ray" },
+    { name: "Mechanical Keyboards", searches: 95000, rawScore: 24, imageUrl: "https://placehold.co/600x400/3B82F6/white?text=Mech+Keyboards" },
+    { name: "Fountain Pens", searches: 85000, rawScore: 23, imageUrl: "https://placehold.co/600x400/4B5563/white?text=Fountain+Pens" },
+    { name: "Bonsai Trees", searches: 75000, rawScore: 22, imageUrl: "https://placehold.co/600x400/16A34A/white?text=Bonsai" },
+    { name: "Kombucha Brewing", searches: 65000, rawScore: 21, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Kombucha" },
+    { name: "Film Photography", searches: 55000, rawScore: 20, imageUrl: "https://placehold.co/600x400/6B7280/white?text=Film+Photography" },
+    { name: "Calligraphy", searches: 48000, rawScore: 19, imageUrl: "https://placehold.co/600x400/A16207/white?text=Calligraphy" },
+    { name: "Lock Picking", searches: 42000, rawScore: 18, imageUrl: "https://placehold.co/600x400/1F2937/white?text=Lock+Picking" },
+
+    // Ultra Niche (Under 40k)
+    { name: "Artisanal Cheese Making", searches: 38000, rawScore: 15, imageUrl: "https://placehold.co/600x400/FBBF24/black?text=Cheese+Making" },
+    { name: "Speedcubing", searches: 35000, rawScore: 14, imageUrl: "https://placehold.co/600x400/DC2626/white?text=Speedcubing" },
+    { name: "Terrarium Building", searches: 32000, rawScore: 13, imageUrl: "https://placehold.co/600x400/059669/white?text=Terrarium" },
+    { name: "Vintage Pen Collecting", searches: 25000, rawScore: 12, imageUrl: "https://placehold.co/600x400/4B5563/white?text=Vintage+Pens" },
+    { name: "Home Beekeeping", searches: 19000, rawScore: 10, imageUrl: "https://placehold.co/600x400/F59E0B/black?text=Beekeeping" },
+    { name: "Ant Farming", searches: 15000, rawScore: 9, imageUrl: "https://placehold.co/600x400/9A3412/white?text=Ant+Farming" },
+    { name: "Forgotten 80s Movies", searches: 12000, rawScore: 8, imageUrl: "https://placehold.co/600x400/EC4899/white?text=80s+Movies" },
+    { name: "Gothic Architecture", searches: 9000, rawScore: 7, imageUrl: "https://placehold.co/600x400/1C1917/white?text=Gothic+Architecture" },
+    { name: "Geocaching", searches: 7000, rawScore: 6, imageUrl: "https://placehold.co/600x400/22C55E/white?text=Geocaching" },
+    { name: "Stoicism Philosophy", searches: 5000, rawScore: 5, imageUrl: "https://placehold.co/600x400/78716C/white?text=Stoicism" },
+    { name: "Mycology (Mushroom Foraging)", searches: 4500, rawScore: 4, imageUrl: "https://placehold.co/600x400/EF4444/white?text=Mycology" },
+    { name: "Sanskrit Literature", searches: 3000, rawScore: 3, imageUrl: "https://placehold.co/600x400/F97316/white?text=Sanskrit" },
+    { name: "Retro Synthesizers", searches: 2500, rawScore: 2, imageUrl: "https://placehold.co/600x400/6D28D9/white?text=Synths" },
+    { name: "Quantum Entanglement", searches: 2000, rawScore: 1, imageUrl: "https://placehold.co/600x400/3B82F6/white?text=Quantum" },
 ];
 
 
