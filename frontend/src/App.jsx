@@ -1,33 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 // --- Animated Number Component ---
 const AnimatedNumber = ({ value }) => {
-  const [currentValue, setCurrentValue] = useState(0);
+    const [currentValue, setCurrentValue] = useState(0);
+    const animationFrameId = useRef(null);
 
-  useEffect(() => {
-    let startTime = null;
-    const duration = 800;
+    useEffect(() => {
+        const startValue = 0;
+        const duration = 800;
+        let startTime = null;
 
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const nextValue = Math.floor(progress * value);
+        const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            
+            const nextValue = Math.floor(startValue + progress * (value - startValue));
+            setCurrentValue(nextValue);
 
-      setCurrentValue(nextValue);
+            if (progress < 1) {
+                animationFrameId.current = requestAnimationFrame(animate);
+            }
+        };
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        setCurrentValue(value);
-      }
-    };
+        animationFrameId.current = requestAnimationFrame(animate);
 
-    requestAnimationFrame(animate);
-  }, [value]);
+        return () => {
+            if (animationFrameId.current) {
+                cancelAnimationFrame(animationFrameId.current);
+            }
+        };
+    }, [value]);
 
-  return <>{currentValue.toLocaleString()}</>;
+    return <>{currentValue.toLocaleString()}</>;
 };
+
 
 // --- Main App ---
 function App() {
@@ -53,6 +60,7 @@ function App() {
   };
 
   const fetchComparison = async () => {
+    if (gameOver) return;
     setLoading(true);
     try {
       const response = await axios.get(`${API_URL}/comparison`);
@@ -71,9 +79,11 @@ function App() {
   };
 
   useEffect(() => {
-    fetchComparison();
-    fetchLeaderboard();
-  }, []);
+    if (!gameOver) {
+        fetchComparison();
+        fetchLeaderboard();
+    }
+  }, [gameOver]);
 
   const handleGuess = async (guess) => {
     const correct =
@@ -85,7 +95,6 @@ function App() {
 
     setTimeout(async () => {
       if (correct) {
-        setScore(score + 1);
         const newItemA = itemB;
 
         const nextResponse = await axios.get(`${API_URL}/comparison`);
@@ -97,11 +106,14 @@ function App() {
         const img = new Image();
         img.src = newItemB.imageUrl;
         img.onload = () => {
+          // BATCH all state updates together for a single, clean re-render
+          setScore((prevScore) => prevScore + 1);
           setItemA(newItemA);
           setItemB(newItemB);
           setShowResult(false);
         };
       } else {
+        setShowResult(false);
         const lowestLeaderboardScore = leaderboard.length < 5 ? 0 : leaderboard[leaderboard.length - 1].score;
         if (score > lowestLeaderboardScore) {
             setMadeLeaderboard(true);
@@ -115,7 +127,7 @@ function App() {
   const handleNewHighScore = async (name) => {
       try {
           await axios.post(`${API_URL}/leaderboard`, { name, score });
-          fetchLeaderboard(); // Refresh leaderboard
+          fetchLeaderboard();
       } catch (error) {
           console.error("Error submitting high score:", error);
       }
@@ -128,7 +140,6 @@ function App() {
     setGameOver(false);
     setShowResult(false);
     setIsCorrect(null);
-    fetchComparison();
   };
 
   // --- Components ---
@@ -248,7 +259,6 @@ function App() {
   );
 }
 
-// --- New High Score Screen ---
 const NewHighScoreScreen = ({ score, onSubmit }) => {
     const [name, setName] = useState('');
 
@@ -283,7 +293,6 @@ const NewHighScoreScreen = ({ score, onSubmit }) => {
     );
 };
 
-// --- Game Over Screen ---
 const GameOverScreen = ({ score, leaderboard, onRestart }) => (
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-black min-h-screen flex items-center justify-center">
         <div className="bg-white/10 backdrop-blur-lg p-12 rounded-3xl shadow-2xl text-center text-white w-[90%] max-w-md">
