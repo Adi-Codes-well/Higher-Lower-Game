@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const app = express();
 const allowedOrigins = [
     'http://localhost:5173', // Your local frontend for development
-    'https://higher-lower-game-1.onrender.com' // Your future live frontend URL
+    'https://higher-lower-game-fp4r.onrender.com' // Your future live frontend URL
 ];
 
 app.use(cors({
