@@ -73,7 +73,6 @@ function App() {
 
     setTimeout(async () => {
       if (correct) {
-        setScore(score + 1);
         const newItemA = itemB;
 
         const nextResponse = await axios.get(API_URL);
@@ -85,6 +84,7 @@ function App() {
         const img = new Image();
         img.src = newItemB.imageUrl;
         img.onload = () => {
+          setScore((prevScore) => prevScore + 1);
           setItemA(newItemA);
           setItemB(newItemB);
           setShowResult(false);
@@ -198,7 +198,7 @@ function App() {
             <>
               <p className="text-2xl text-slate-300">has</p>
               <div className="text-6xl md:text-7xl font-extrabold text-white my-4">
-                <AnimatedNumber value={itemB.searches} />
+                <AnimatedNumber value={itemB.searches} key={itemB.name} />
               </div>
               <p className="text-2xl text-slate-300">monthly searches</p>
             </>
