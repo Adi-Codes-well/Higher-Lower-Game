@@ -1,5 +1,3 @@
-// backend/server.js
-
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
@@ -7,14 +5,13 @@ const mongoose = require("mongoose");
 
 const app = express();
 const allowedOrigins = [
-  "http://localhost:5173", // Your local frontend for development
-  "https://higher-lower-game-1.onrender.com", // Your future live frontend URL
+  "http://localhost:5173",
+  "https://higher-lower-game-1.onrender.com",
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.indexOf(origin) === -1) {
@@ -64,9 +61,7 @@ app.post("/api/leaderboard", async (req, res) => {
   }
 });
 
-// --- Expanded Static Keyword Database ---
 const KEYWORD_DATA = [
-  // Ultra Extreme Popular Words
   {
     name: "YouTube",
     searches: 594200000,
@@ -214,7 +209,6 @@ const KEYWORD_DATA = [
       "https://www.thehosteller.com/_next/image/?url=https%3A%2F%2Fstatic.thehosteller.com%2Fhostel%2Fimages%2Fimage.jpg%2Fimage-1735884840040.jpg&w=2048&q=75",
   },
 
-  // Worldwide - Top Tier
   {
     name: "Cristiano Ronaldo",
     searches: 8900000,
@@ -251,7 +245,6 @@ const KEYWORD_DATA = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7ENmNqKTWeJCeYKGmiAYUaEBJSqm46Nxmag&s",
   },
 
-  // Indian - High Tier
   {
     name: "Holi",
     searches: 5800000,
@@ -309,7 +302,6 @@ const KEYWORD_DATA = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/LVM3_M3%2C_OneWeb_India-2_campaign_30.webp/1200px-LVM3_M3%2C_OneWeb_India-2_campaign_30.webp.png",
   },
 
-  // Worldwide - High Tier
   {
     name: "TikTok",
     searches: 7000000,
@@ -381,7 +373,6 @@ const KEYWORD_DATA = [
       "https://assets-prd.ignimgs.com/2021/01/26/harry-potter-button-1611619333944.jpg",
   },
 
-  // Indian - Mid Tier
   {
     name: "Yoga",
     searches: 3500000,
@@ -424,7 +415,6 @@ const KEYWORD_DATA = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU79OZNQVYc6saP22ow_a9WupDwPcl0GR-EA&s",
   },
 
-  // Worldwide - Mid Tier
   {
     name: "Star Wars",
     searches: 5000000,
@@ -489,7 +479,6 @@ const KEYWORD_DATA = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7KqqV_3MomSfb9SRN1tVB50OMFQ9yJgWh2w&s",
   },
 
-  // Indian - Lower Tier
   {
     name: "Varanasi",
     searches: 1900000,
@@ -526,7 +515,6 @@ const KEYWORD_DATA = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsrgbQ5KGcu0ZGvmI26rseTqey6Mqjvb8mWQ&s",
   },
 
-  // Worldwide - Lower Tier
   {
     name: "Coffee",
     searches: 3000000,
@@ -597,7 +585,6 @@ const KEYWORD_DATA = [
       "https://images.squarespace-cdn.com/content/v1/5abe566ac3c16a912b110dbe/1525134466812-3JGURIOTV9VGZM4V2A9I/Buddha+IMG_4262+crop.jpg",
   },
 
-  // New additions (under 1M) - Tier 1 (500k - 999k)
   {
     name: "Ghats",
     searches: 900000,
@@ -662,7 +649,6 @@ const KEYWORD_DATA = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2bwdqRls2xfetQRNmAw5pOXWnZFicOycLAQ&s",
   },
 
-  // New additions (under 1M) - Tier 2 (200k - 499k)
   {
     name: "Indie Gaming",
     searches: 580000,
@@ -726,7 +712,6 @@ const KEYWORD_DATA = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIt5g5BE6V4o6pmmWY-0MLwLZbax4MJX58BA&s",
   },
 
-  // New additions (under 1M) - Tier 3 (50k - 199k)
   {
     name: "Rani Lakshmibai",
     searches: 200000,
@@ -804,7 +789,6 @@ const KEYWORD_DATA = [
       "https://shotkit.com/wp-content/uploads/2023/03/film-photographer.jpg",
   },
 
-  // New additions (under 1M) - Tier 4 (10k - 49k)
   {
     name: "Calligraphy",
     searches: 48000,
@@ -861,7 +845,6 @@ const KEYWORD_DATA = [
       "https://www.keralatourism.org/images/enchanting_kerala/large/kalaripayattu20150821085515_559_1.jpg",
   },
 
-  // Ultra Niche (Under 10k)
   {
     name: "Sanskrit Literature",
     searches: 3000,
@@ -891,7 +874,6 @@ const KEYWORD_DATA = [
       "https://static.toiimg.com/photo/imgsize-866766,msid-68102322/68102322.jpg",
   },
 
-  // Ultra Extreme Popular Words (20 new entries)
   {
     name: "Reddit",
     searches: 135000000,
@@ -910,8 +892,7 @@ const KEYWORD_DATA = [
     name: "Roblox",
     searches: 85000000,
     rawScore: 96,
-    imageUrl:
-      "https://images.rbxcdn.com/5348266ea6c5e67b19d6a814cbbb70f6.jpg",
+    imageUrl: "https://images.rbxcdn.com/5348266ea6c5e67b19d6a814cbbb70f6.jpg",
   },
   {
     name: "Discord",
@@ -927,7 +908,7 @@ const KEYWORD_DATA = [
     imageUrl:
       "https://export.ebay.com/_next/static/images/og-image-ebay-9997ef0e03c45b550a3e445b411aa3c7.png",
   },
-  
+
   {
     name: "Target",
     searches: 55000000,
@@ -949,44 +930,162 @@ const KEYWORD_DATA = [
     imageUrl:
       "https://s.yimg.com/nq/nr/img/desktop_notification_icon_3x_hyeOa8eLuUarSAZ1BW1p6y52zCsA520yKCg6fgaOCXQ_v1.png",
   },
-  { name: "DuckDuckGo", searches: 70000000, rawScore: 95, imageUrl: "https://duckduckgo.com/static-assets/social/app.jpg" },
-  { name: "IMDb", searches: 68000000, rawScore: 95, imageUrl: "https://cdn.prod.website-files.com/626fae216404de74c2539b98/633558f4ed4b31fead1f3382_8.png" },
-  { name: "CNN", searches: 66000000, rawScore: 95, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeiz9aqUkKsbcthWn7O1gvDpLaZxyJR3boIg&s" },
-  { name: "BBC", searches: 63000000, rawScore: 94, imageUrl: "https://yt3.googleusercontent.com/v4JamQ9B-PUiJHjmZQs9UwTaoLQW8vijJMMpV5QvA2wHQ6iwWM8Q1s6O4jgTl0dtDigVWAi7SA=s900-c-k-c0x00ffffff-no-rj" },
+  {
+    name: "DuckDuckGo",
+    searches: 70000000,
+    rawScore: 95,
+    imageUrl: "https://duckduckgo.com/static-assets/social/app.jpg",
+  },
+  {
+    name: "IMDb",
+    searches: 68000000,
+    rawScore: 95,
+    imageUrl:
+      "https://cdn.prod.website-files.com/626fae216404de74c2539b98/633558f4ed4b31fead1f3382_8.png",
+  },
+  {
+    name: "CNN",
+    searches: 66000000,
+    rawScore: 95,
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeiz9aqUkKsbcthWn7O1gvDpLaZxyJR3boIg&s",
+  },
+  {
+    name: "BBC",
+    searches: 63000000,
+    rawScore: 94,
+    imageUrl:
+      "https://yt3.googleusercontent.com/v4JamQ9B-PUiJHjmZQs9UwTaoLQW8vijJMMpV5QvA2wHQ6iwWM8Q1s6O4jgTl0dtDigVWAi7SA=s900-c-k-c0x00ffffff-no-rj",
+  },
   {
     name: "The New York Times",
     searches: 62000000,
     rawScore: 94,
-    imageUrl: "https://cdn.britannica.com/59/271759-050-D35265F9/the-new-york-times-building-new-york-city.jpg",
+    imageUrl:
+      "https://cdn.britannica.com/59/271759-050-D35265F9/the-new-york-times-building-new-york-city.jpg",
   },
 
-  // Worldwide - Top Tier (20 new entries)
-  { name: "Fortnite", searches: 7600000, rawScore: 94, imageUrl: "https://cdn1.epicgames.com/offer/fn/FNBR_37-00_C6S4_EGS_Launcher_KeyArt_FNLogo_Blade_1200x1600_1200x1600-0924136c90b79f9006796f69f24a07f6" },
-  { name: "Valorant", searches: 7100000, rawScore: 92, imageUrl: "https://assets.xboxservices.com/assets/4e/bc/4ebcb533-e184-42f3-833b-9aa47a81f39e.jpg?n=153142244433_Poster-Image-1084_1920x720.jpg" },
-  { name: "Among Us", searches: 6900000, rawScore: 91, imageUrl: "https://media.wired.com/photos/620581d7c228dc232641feaa/3:2/w_2560%2Cc_limit/Games-Innersloth-Among-Us-Key-Art.jpg" },
-  { name: "Kim Kardashian", searches: 6700000, rawScore: 90, imageUrl: "https://hips.hearstapps.com/hmg-prod/images/kim-kardashian-west-celebrates-the-launch-of-skims-at-news-photo-1580935722.jpg?crop=1.00xw:0.445xh;0,0.0260xh&resize=640:*" },
-  { name: "Justin Bieber", searches: 6100000, rawScore: 87, imageUrl: "https://static.wikia.nocookie.net/justin-bieber/images/6/64/119825887_10159146072413888_1705069436830960386_n.jpg/revision/latest?cb=20231010232741" },
-  { name: "Stranger Things", searches: 5100000, rawScore: 82, imageUrl: "https://resizing.flixster.com/98TQcHJjUJSBLBmiig7_U7Kadyg=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p12991665_b_h9_aa.jpg" },
-  { name: "Friends", searches: 4700000, rawScore: 80, imageUrl: "https://m.media-amazon.com/images/S/pv-target-images/c7fc75a423fc33698265a27fe446a41026f3c8642fd6c8706c43b897d2ffb3e6.jpg" },
-  { name: "Breaking Bad", searches: 4500000, rawScore: 79, imageUrl: "https://www.thebvnewspaper.com/wp-content/uploads/2013/09/Breaking-Bad.jpg" },
+  {
+    name: "Fortnite",
+    searches: 7600000,
+    rawScore: 94,
+    imageUrl:
+      "https://cdn1.epicgames.com/offer/fn/FNBR_37-00_C6S4_EGS_Launcher_KeyArt_FNLogo_Blade_1200x1600_1200x1600-0924136c90b79f9006796f69f24a07f6",
+  },
+  {
+    name: "Valorant",
+    searches: 7100000,
+    rawScore: 92,
+    imageUrl:
+      "https://assets.xboxservices.com/assets/4e/bc/4ebcb533-e184-42f3-833b-9aa47a81f39e.jpg?n=153142244433_Poster-Image-1084_1920x720.jpg",
+  },
+  {
+    name: "Among Us",
+    searches: 6900000,
+    rawScore: 91,
+    imageUrl:
+      "https://media.wired.com/photos/620581d7c228dc232641feaa/3:2/w_2560%2Cc_limit/Games-Innersloth-Among-Us-Key-Art.jpg",
+  },
+  {
+    name: "Kim Kardashian",
+    searches: 6700000,
+    rawScore: 90,
+    imageUrl:
+      "https://hips.hearstapps.com/hmg-prod/images/kim-kardashian-west-celebrates-the-launch-of-skims-at-news-photo-1580935722.jpg?crop=1.00xw:0.445xh;0,0.0260xh&resize=640:*",
+  },
+  {
+    name: "Justin Bieber",
+    searches: 6100000,
+    rawScore: 87,
+    imageUrl:
+      "https://static.wikia.nocookie.net/justin-bieber/images/6/64/119825887_10159146072413888_1705069436830960386_n.jpg/revision/latest?cb=20231010232741",
+  },
+  {
+    name: "Stranger Things",
+    searches: 5100000,
+    rawScore: 82,
+    imageUrl:
+      "https://resizing.flixster.com/98TQcHJjUJSBLBmiig7_U7Kadyg=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p12991665_b_h9_aa.jpg",
+  },
+  {
+    name: "Friends",
+    searches: 4700000,
+    rawScore: 80,
+    imageUrl:
+      "https://m.media-amazon.com/images/S/pv-target-images/c7fc75a423fc33698265a27fe446a41026f3c8642fd6c8706c43b897d2ffb3e6.jpg",
+  },
+  {
+    name: "Breaking Bad",
+    searches: 4500000,
+    rawScore: 79,
+    imageUrl:
+      "https://www.thebvnewspaper.com/wp-content/uploads/2013/09/Breaking-Bad.jpg",
+  },
 
-  // Indian - High Tier (20 new entries)
-  { name: "Sachin Tendulkar", searches: 3700000, rawScore: 80, imageUrl: "https://upload.wikimedia.org/wikipedia/commons/2/25/Sachin_Tendulkar_at_MRF_Promotion_Event.jpg" },
-  { name: "MS Dhoni", searches: 3600000, rawScore: 79, imageUrl: "https://images.news18.com/ibnlive/uploads/2025/05/ms-dhoni-chennai-super-kings-ipl-2025-1-2025-05-4645cac8acff790f209d727a4191f532-4x3.jpg" },
-  { name: "Rohit Sharma", searches: 3500000, rawScore: 78, imageUrl: "https://static.toiimg.com/thumb/msid-111741230,width-1280,height-720,resizemode-4/111741230.jpg" },
-  { name: "Amitabh Bachchan", searches: 3400000, rawScore: 77, imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Indian_actor_Amitabh_Bachchan.jpg/960px-Indian_actor_Amitabh_Bachchan.jpg" },
-  { name: "Salman Khan", searches: 3200000, rawScore: 75, imageUrl: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202408/salman-khan-270614878-1x1.jpg?VersionId=fsb8XOMeCiULTAYHtcgU0kugDQyvf0b_" },
-  { name: "Alia Bhatt", searches: 2900000, rawScore: 72, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDzc9sU2uUy_Ow2WYRCD8LyNYuf5FjycMsbw&s" },
+  {
+    name: "Sachin Tendulkar",
+    searches: 3700000,
+    rawScore: 80,
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/2/25/Sachin_Tendulkar_at_MRF_Promotion_Event.jpg",
+  },
+  {
+    name: "MS Dhoni",
+    searches: 3600000,
+    rawScore: 79,
+    imageUrl:
+      "https://images.news18.com/ibnlive/uploads/2025/05/ms-dhoni-chennai-super-kings-ipl-2025-1-2025-05-4645cac8acff790f209d727a4191f532-4x3.jpg",
+  },
+  {
+    name: "Rohit Sharma",
+    searches: 3500000,
+    rawScore: 78,
+    imageUrl:
+      "https://static.toiimg.com/thumb/msid-111741230,width-1280,height-720,resizemode-4/111741230.jpg",
+  },
+  {
+    name: "Amitabh Bachchan",
+    searches: 3400000,
+    rawScore: 77,
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Indian_actor_Amitabh_Bachchan.jpg/960px-Indian_actor_Amitabh_Bachchan.jpg",
+  },
+  {
+    name: "Salman Khan",
+    searches: 3200000,
+    rawScore: 75,
+    imageUrl:
+      "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202408/salman-khan-270614878-1x1.jpg?VersionId=fsb8XOMeCiULTAYHtcgU0kugDQyvf0b_",
+  },
+  {
+    name: "Alia Bhatt",
+    searches: 2900000,
+    rawScore: 72,
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDzc9sU2uUy_Ow2WYRCD8LyNYuf5FjycMsbw&s",
+  },
   {
     name: "Jacqueline Fernandez",
     searches: 2200000,
     rawScore: 65,
-    imageUrl: "https://img.indiaforums.com/person/480x360/0/7649-jacqueline-fernandez.webp?c=2rGD67",
+    imageUrl:
+      "https://img.indiaforums.com/person/480x360/0/7649-jacqueline-fernandez.webp?c=2rGD67",
   },
-  { name: "Shraddha Kapoor", searches: 2100000, rawScore: 64, imageUrl: "https://i0.wp.com/nityabajaj.com/wp-content/uploads/2024/08/IMG-20240805-WA0052-scaled.webp?fit=1707%2C2560&ssl=1" },
-  { name: "Disha Patani", searches: 2000000, rawScore: 63, imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/75/Photos-Disha-Patani-snapped-at-Myntra-event_%28cropped%29.jpg" },
+  {
+    name: "Shraddha Kapoor",
+    searches: 2100000,
+    rawScore: 64,
+    imageUrl:
+      "https://i0.wp.com/nityabajaj.com/wp-content/uploads/2024/08/IMG-20240805-WA0052-scaled.webp?fit=1707%2C2560&ssl=1",
+  },
+  {
+    name: "Disha Patani",
+    searches: 2000000,
+    rawScore: 63,
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/7/75/Photos-Disha-Patani-snapped-at-Myntra-event_%28cropped%29.jpg",
+  },
 
-  // Indian - Mid Tier (20 new entries)
   {
     name: "Sania Mirza",
     searches: 1700000,
@@ -1038,7 +1137,7 @@ const KEYWORD_DATA = [
   },
 ];
 
-// --- Helper Function ---
+
 const getRandomItem = (exclude = null) => {
   let item;
   do {
@@ -1047,7 +1146,6 @@ const getRandomItem = (exclude = null) => {
   return item;
 };
 
-// --- API Route (Simplified) ---
 app.get("/api/comparison", (req, res) => {
   try {
     const itemA = getRandomItem();

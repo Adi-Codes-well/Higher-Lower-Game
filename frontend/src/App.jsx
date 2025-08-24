@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
-// --- Animated Number Component ---
 const AnimatedNumber = ({ value }) => {
     const [currentValue, setCurrentValue] = useState(0);
     const animationFrameId = useRef(null);
@@ -36,7 +35,6 @@ const AnimatedNumber = ({ value }) => {
 };
 
 
-// --- Main App ---
 function App() {
   const [itemA, setItemA] = useState(null);
   const [itemB, setItemB] = useState(null);
@@ -106,7 +104,6 @@ function App() {
         const img = new Image();
         img.src = newItemB.imageUrl;
         img.onload = () => {
-          // BATCH all state updates together for a single, clean re-render
           setScore((prevScore) => prevScore + 1);
           setItemA(newItemA);
           setItemB(newItemB);
